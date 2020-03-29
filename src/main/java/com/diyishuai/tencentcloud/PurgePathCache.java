@@ -17,12 +17,21 @@ import com.tencentcloudapi.cdn.v20180606.models.PurgePathCacheResponse;
  */
 public class PurgePathCache {
     public static void main(String [] args) {
-        if (args.length < 2){
+        if (args.length < 4){
             throw new RuntimeException("参数缺少");
         }
         String sId = args[0];
         String sKey = args[1];
-
+        String region = args[2];
+        String paths = "";
+        for (int i = 3; i < args.length; i++) {
+            paths += "\""+args[i]+"\"";
+            if (i < args.length-1){
+                paths += ",";
+            }
+        }
+        System.out.println("paths : " + paths);
+        System.out.println("region : " + region);
         try{
 
             Credential cred = new Credential(sId, sKey);
@@ -33,9 +42,9 @@ public class PurgePathCache {
             ClientProfile clientProfile = new ClientProfile();
             clientProfile.setHttpProfile(httpProfile);
 
-            CdnClient client = new CdnClient(cred, "ap-guangzhou", clientProfile);
+            CdnClient client = new CdnClient(cred, region, clientProfile);
 
-            String params = "{\"Paths\":[\"https://di1shuai.com/\"],\"FlushType\":\"delete\"}";
+            String params = "{\"Paths\":["+paths+"],\"FlushType\":\"delete\"}";
             PurgePathCacheRequest req = PurgePathCacheRequest.fromJsonString(params, PurgePathCacheRequest.class);
 
             PurgePathCacheResponse resp = client.PurgePathCache(req);
