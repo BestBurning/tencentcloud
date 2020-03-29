@@ -8,7 +8,7 @@
 
 直到`刷新CDN`之前与[demo](https://codes-farm.coding.net/p/html-cos-demo/d/html-cos-demo/git)保持一致，
 之后在`coding`->`项目`中`构建`设置中添加一步`刷新CDN`:
-![cdn](https://github.com/BestBurning/tencentcloud/tree/master/imgs/cdn.png)
+![cdn](https://github.com/BestBurning/tencentcloud/blob/master/imgs/cdn.png)
 
 ```
 pipeline {
