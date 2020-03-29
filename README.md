@@ -38,7 +38,7 @@ pipeline {
         sh 'git clone https://github.com/BestBurning/tencentcloud.git'
         dir(path: './tencentcloud') {
           sh 'mvn clean package '
-          sh 'java -jar ./target/tencentcloud-1.0-SNAPSHOT.jar $TENCENT_SECRET_ID $TENCENT_SECRET_KEY ap-guangzhou https://di1shuai.com/'
+          sh 'java -jar ./target/tencentcloud-1.0-SNAPSHOT.jar $TENCENT_SECRET_ID $TENCENT_SECRET_KEY $TENCENT_REGION https://di1shuai.com/'
         }
         echo '刷新完毕'
       }
@@ -48,7 +48,7 @@ pipeline {
 ```
 ### 参数说明
 ```
-java -jar ./target/tencentcloud-1.0-SNAPSHOT.jar $TENCENT_SECRET_ID $TENCENT_SECRET_KEY ap-guangzhou https://di1shuai.com/
+java -jar ./target/tencentcloud-1.0-SNAPSHOT.jar $TENCENT_SECRET_ID $TENCENT_SECRET_KEY $TENCENT_REGION https://di1shuai.com/
 ```
 1. 腾讯云`SECRET_ID`
 2. 腾讯云`SECRET_KEY`
